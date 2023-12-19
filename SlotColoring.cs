@@ -19,9 +19,13 @@ namespace LootValue
 			string[] split = values.Split(':');
 
 			if (int.TryParse(split[0], out int upperBound))
+			{
 				UpperBound = upperBound;
+			}
 			else
+			{
 				UpperBound = int.MaxValue;
+			}
 
 			HexColor = split[1];
 		}
@@ -96,7 +100,7 @@ namespace LootValue
 				{
 					logger.LogWarning($"Custom color format failed. Entry #{i} must start with an [");
 					return false;
-				} 
+				}
 
 				if (!bound.EndsWith("]"))
 				{
@@ -110,7 +114,9 @@ namespace LootValue
 					if (!int.TryParse(values[0], out int value))
 					{
 						if (i == bounds.Length - 1)
+						{
 							continue;
+						}
 						else
 						{
 							logger.LogWarning($"Custom color format failed. Entry #{i} has invalid upper bound");
